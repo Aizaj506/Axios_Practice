@@ -1,17 +1,19 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import MovieCard from '../components/MovieCard';
+import { getMovie } from '../API/axiosInstance';
 
 const Movie = () => {
 
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
 
-    const API = "http://www.omdbapi.com/?s=avengers&apikey=522f43f8";
+    // const API = "http://www.omdbapi.com/?s=avengers&apikey=522f43f8";
 
     const getMovieData = async () => {
         try {
-            const response = await axios.get(API);
+            // const response = await axios.get(API);
+            const response = await getMovie();
             console.log(response.data.Search)
             response.data.Search ? setData(response.data.Search) : setError("No Movie Found");
         } catch (error) {
